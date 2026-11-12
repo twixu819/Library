@@ -1,0 +1,59 @@
+﻿<Window x:Class="Library.BookLoanWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library"
+        mc:Ignorable="d"
+        Title="Видача книги" Height="570" Width="460"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Background="#F8FAFC">
+    <Grid Margin="22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,12">
+            <TextBlock Text="Оформлення видачі" FontSize="18" FontWeight="Bold"/>
+            <TextBlock x:Name="BookTitleLabel" Text="Книга: Назва видання" FontSize="13" Foreground="#475569" TextTrimming="CharacterEllipsis" Margin="0,4,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="0,0,0,14">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="StudentToggleBtn" Content="Студент" Padding="0,8" Margin="0,0,5,0" 
+                     Cursor="Hand" Click="StudentToggle_Click"/>
+            <Button x:Name="TeacherToggleBtn" Grid.Column="1" Content="Викладач" Padding="0,8" Margin="5,0,0,0" 
+                    Cursor="Hand" Click="TeacherToggle_Click"/>
+        </Grid>
+
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Прізвище:" Margin="0,4,0,2" FontWeight="SemiBold" Foreground="#475569"/>
+            <TextBox x:Name="LastNameBox" Padding="8,5" FontSize="13" Background="White" BorderBrush="#CBD5E1"/>
+
+            <TextBlock Text="Ім'я:" Margin="0,8,0,2" FontWeight="SemiBold" Foreground="#475569"/>
+            <TextBox x:Name="FirstNameBox" Padding="8,5" FontSize="13" Background="White" BorderBrush="#CBD5E1"/>
+
+            <TextBlock Text="По батькові:" Margin="0,8,0,2" FontWeight="SemiBold" Foreground="#475569"/>
+            <TextBox x:Name="MiddleNameBox" Padding="8,5" FontSize="13" Background="White" BorderBrush="#CBD5E1"/>
+
+            <TextBlock x:Name="GroupOrSpecialtyLabel" Text="Номер групи:" Margin="0,8,0,2" FontWeight="SemiBold" Foreground="#475569"/>
+            <TextBox x:Name="GroupOrSpecialtyBox" Padding="8,5" FontSize="13" Background="White" BorderBrush="#CBD5E1"/>
+
+            <TextBlock Text="Номер телефону:" Margin="0,8,0,2" FontWeight="SemiBold" Foreground="#475569"/>
+            <TextBox x:Name="PhoneBox" Padding="8,5" FontSize="13" Background="White" BorderBrush="#CBD5E1"/>
+
+            <TextBlock Text="Дата повернення книги:" Margin="0,8,0,2" FontWeight="SemiBold" Foreground="#475569"/>
+            <DatePicker x:Name="DueDatePicker" FontSize="13" Background="White" BorderBrush="#CBD5E1"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button Content="Відмінити" Padding="14,7" Margin="0,0,10,0" Background="#E2E8F0" BorderThickness="0" Cursor="Hand" Click="CancelBtn_Click"/>
+            <Button Content="Видати книгу" Padding="16,7" Background="#166534" Foreground="White" BorderThickness="0" Cursor="Hand" Click="IssueConfirmBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
