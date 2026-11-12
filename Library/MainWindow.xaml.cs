@@ -90,7 +90,31 @@ namespace Library
         private void AllBooks_Click(object sender, RoutedEventArgs e)
         {
             SearchBox.Text = string.Empty;
+            DisciplinesBtn.Content = "Список дисциплін ▼";
             LoadBooksFromDatabase();
+        }
+
+        private void DisciplinesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (DisciplinesBtn.ContextMenu != null)
+            {
+                DisciplinesBtn.ContextMenu.PlacementTarget = DisciplinesBtn;
+                DisciplinesBtn.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+                DisciplinesBtn.ContextMenu.IsOpen = true;
+            }
+        }
+
+        private void DisciplineItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is MenuItem item)
+            {
+                string selectedDiscipline = item.Header.ToString();
+                DisciplinesBtn.Content = $"Дисципліна: {selectedDiscipline} ▼";
+                SearchBox.Text = string.Empty;
+
+                var filtered = _allBooks.FindAll(b => b.Discipline == selectedDiscipline);
+                BooksDataGrid.ItemsSource = filtered;
+            }
         }
 
         private void AddBook_Click(object sender, RoutedEventArgs e)

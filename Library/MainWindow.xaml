@@ -50,7 +50,14 @@
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Content="Усі видання" Margin="4,0" Padding="12,6" Background="White" BorderBrush="#94A3B8" FontWeight="SemiBold" Click="AllBooks_Click"/>
-                    <Button Content="Список дисциплін" Margin="4,0" Padding="12,6" Background="White" BorderBrush="#94A3B8" FontWeight="SemiBold"/>
+                    <Button x:Name="DisciplinesBtn" Content="Список дисциплін ▼" Margin="4,0" Padding="12,6" Background="White" BorderBrush="#94A3B8" FontWeight="SemiBold" Click="DisciplinesBtn_Click">
+                        <Button.ContextMenu>
+                            <ContextMenu x:Name="DisciplinesMenu">
+                                <MenuItem Header="121" Click="DisciplineItem_Click"/>
+                                <MenuItem Header="133" Click="DisciplineItem_Click"/>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
                     <Button Content="Видані" Margin="4,0" Padding="12,6" Background="White" BorderBrush="#94A3B8" FontWeight="SemiBold" Click="IssuedBooks_Click"/>
                     <Button Content="+ Додати книги" Margin="8,0,4,0" Padding="12,6" Background="#F8FAFC" BorderBrush="#0F766E" Foreground="#0F766E" FontWeight="Bold" Click="AddBook_Click"/>
                     <Button Content="Список боржників" Margin="4,0" Padding="12,6" Background="#FEF2F2" BorderBrush="#DC2626" Foreground="#DC2626" FontWeight="Bold" Click="Debtors_Click"/>
